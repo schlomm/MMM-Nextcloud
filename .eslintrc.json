@@ -1,0 +1,27 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "es2022": true
+    },
+    "extends": ["eslint:recommended"],
+    "globals": {
+        "Module": "readonly",
+        "Log": "readonly",
+        "config": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2022,
+        "sourceType": "script"
+    },
+    "rules": {
+        "indent": ["error", 4],
+        "quotes": ["error", "double"],
+        "semi": ["error", "always"],
+        "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "eqeqeq": "error",
+        "no-console": "off",
+        "curly": "error"
+    },
+    "ignorePatterns": ["node_modules/", "dist/", ".git/"]
+}

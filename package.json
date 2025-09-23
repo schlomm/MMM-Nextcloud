@@ -1,0 +1,59 @@
+{
+  "name": "mmm-nextcloud",
+  "version": "1.0.0",
+  "description": "MagicMirror module for displaying random photos from Nextcloud with EXIF data support",
+  "main": "MMM-Nextcloud.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint *.js",
+    "format": "prettier --write *.js *.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schlomm/MMM-Nextcloud.git"
+  },
+  "keywords": [
+    "MagicMirror",
+    "Module",
+    "Photo",
+    "Image",
+    "Nextcloud"
+  ],
+  "author": "Dominik Schlomm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/schlomm/MMM-Nextcloud/issues"
+  },
+  "homepage": "https://github.com/schlomm/MMM-Nextcloud#readme",
+  "dependencies": {
+    "exif-parser": "^0.1.12"
+  },
+  "devDependencies": {
+    "eslint": "^9.11.1",
+    "prettier": "^3.3.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "magicmirror": {
+    "moduleName": "MMM-Nextcloud",
+    "moduleType": "media",
+    "description": "Display random photos from Nextcloud and turn EXIF data to a photo tag",
+    "features": [
+      "Nextcloud WebDAV integration",
+      "EXIF data extraction and display",
+      "Automatic photo list refresh",
+      "Configurable date formatting",
+      "Blur background effects",
+      "Status icons with animations",
+      "Error handling and logging",
+      "No jQuery dependency",
+      "Modern vanilla JavaScript"
+    ],
+    "requirements": [
+      "Nextcloud server with WebDAV access",
+      "Valid Nextcloud credentials",
+      "Node.js 14 or higher"
+    ]
+  }
+}
