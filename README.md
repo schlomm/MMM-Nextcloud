@@ -16,6 +16,15 @@ Main differences: No support for local images or picsum.
 - **📱 Status Icons**: Visual indicators for play/pause and navigation states
 - **⚡ Performance**: Image caching and optimized loading
 
+## 📸 Screenshots
+
+See MMM-Nextcloud in action with different display configurations:
+
+| Small Display (No Blur) | Small Display (With Blur) | Fullscreen with EXIF Data |
+|:------------------------:|:--------------------------:|:--------------------------:|
+| ![Small No Blur](screenshots/small_no_blur.png) | ![Small Blur](screenshots/small_blur.png) | ![Fullscreen with Tag](screenshots/fullscreen_with_tag.png) |
+| Compact mode without background blur | Compact mode with background blur effect | Full-size display showing EXIF metadata |
+
 ## 🚀 Installation
 
 1. Navigate to your MagicMirror modules directory:
