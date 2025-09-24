@@ -35,6 +35,7 @@ Module.register("MMM-Nextcloud", {
         statusIconPosition: "top_right", // "top_right", "top_left", "bottom_right", "bottom_left"
         showExifData: true,
         enableGeocoding: true, // Enable reverse geocoding for GPS coordinates to location names
+        showOsmAttribution: true, // Show OpenStreetMap attribution when location data is displayed
         dateFormat: "DD MMMM YYYY", // Custom date format for EXIF data display
     },
 
@@ -296,6 +297,7 @@ Module.register("MMM-Nextcloud", {
         if (!exifContainer) return;
 
         let exifText = "";
+        let hasLocationData = false;
         
         if (exifData.date) {
             exifText += this.formatExifDate(exifData.date);
@@ -304,10 +306,29 @@ Module.register("MMM-Nextcloud", {
         if (exifData.location) {
             if (exifText) exifText += ", ";
             exifText += exifData.location;
+            hasLocationData = true;
         }
 
         if (exifText) {
-            exifContainer.textContent = exifText;
+            // Clear previous content
+            exifContainer.innerHTML = "";
+            
+            // Main EXIF text
+            const mainText = document.createElement("span");
+            mainText.textContent = exifText;
+            exifContainer.appendChild(mainText);
+            
+            // Add OSM attribution if location data is shown (from geocoding) and attribution is enabled
+            if (hasLocationData && this.config.enableGeocoding && this.config.showOsmAttribution) {
+                const attribution = document.createElement("div");
+                attribution.className = "nextcloud-osm-attribution";
+                attribution.innerHTML = 'Location data © <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>';
+                attribution.style.fontSize = "0.7em";
+                attribution.style.opacity = "0.8";
+                attribution.style.marginTop = "2px";
+                exifContainer.appendChild(attribution);
+            }
+            
             exifContainer.style.display = "block";
         } else {
             this.hideExifDisplay();

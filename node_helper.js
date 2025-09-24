@@ -382,7 +382,16 @@ module.exports = NodeHelper.create({
         return new Promise((resolve, reject) => {
             const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=10&addressdetails=1`;
             
-            https.get(url, { timeout: 5000 }, (response) => {
+            //add needed USer-Agent header
+            //more information at https://operations.osmfoundation.org/policies/nominatim/
+            const options = {
+                timeout: 5000,
+                headers: {
+                    'User-Agent': 'MMM-Nextcloud/1.0.0 MagicMirror Module (https://github.com/schlomm/MMM-Nextcloud)'
+                }
+            };
+            
+            https.get(url, options, (response) => {
                 let body = "";
                 
                 response.on("data", (chunk) => {

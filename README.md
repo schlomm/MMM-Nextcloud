@@ -79,6 +79,7 @@ Add the module to your `config/config.js` file:
         // EXIF and UI settings
         showExifData: true,
         enableGeocoding: true, // Enable reverse geocoding for GPS coordinates
+        showOsmAttribution: false, // Show OpenStreetMap attribution when location data is displayed
         dateFormat: "DD MMMM YYYY", // Custom date format
         showStatusIcon: true,
         statusIconPosition: "top_right", // top_right, top_left, bottom_right, bottom_left
@@ -118,6 +119,7 @@ For security, use Nextcloud app passwords instead of your main password:
 | `startHidden` | boolean | `false` | Start with module hidden |
 | `showExifData` | boolean | `true` | Display EXIF data (date/location) |
 | `enableGeocoding` | boolean | `true` | Enable reverse geocoding to convert GPS coordinates to location names |
+| `showOsmAttribution` | boolean | `false` | Show OpenStreetMap attribution when location data is displayed |
 | `dateFormat` | string | `"DD MMMM YYYY"` | Date format for EXIF display |
 | `showStatusIcon` | boolean | `true` | Show status icon |
 | `statusIconPosition` | string | `"top_right"` | Icon position: top_right, top_left, bottom_right, bottom_left |
@@ -192,6 +194,14 @@ logLevel: ["INFO", "LOG", "WARN", "ERROR", "DEBUG"]
 ## 📄 License
 
 MIT License - see LICENSE file for details.
+
+## 🗺️ OpenStreetMap Attribution
+
+This module uses geocoding services provided by [OpenStreetMap](https://www.openstreetmap.org) through the [Nominatim API](https://nominatim.openstreetmap.org/) to convert GPS coordinates from photo EXIF data into human-readable location names.
+
+**Data Attribution**: Location data © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors, available under the [Open Database License](https://opendatacommons.org/licenses/odbl/).
+
+When the `enableGeocoding` option is enabled, this module makes requests to the Nominatim API service operated by the OpenStreetMap Foundation. Please refer to the [Nominatim Usage Policy](https://operations.osmfoundation.org/policies/nominatim/) for service terms and fair use guidelines.
 
 ## ❓ Support & Feature Requests
 
