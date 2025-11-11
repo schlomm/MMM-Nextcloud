@@ -168,6 +168,10 @@ this.sendNotification("NEXTCLOUD_REFRESH_LIST");
    - Verify Nextcloud URL and credentials
    - Check that the path contains image files
    - Review browser console for errors
+   - Check that the chosen folder does not contain too many photos. It is possible to create an album in the Nextcloud Photos app and use it in the configuration file to reduce the number of photos. This way, there is no need to create copies of pictures in another folder. The path variable in the configuration would be:
+     ```javascript
+     path: "https://your-nextcloud.com/remote.php/dav/photos/username/albums/albumname/",
+     ```
 
 2. **Authentication failed**
    - Use app password instead of main password
