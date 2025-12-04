@@ -348,7 +348,17 @@ Module.register("MMM-Nextcloud", {
             }
             
             // Simple date formatting - could be enhanced with moment.js alternative
-            return date.toLocaleDateString(config.locale, this.config.dateFormat);
+            let dateFormat = this.config.dateFormat;
+            if (typeof(dateFormat) !== 'object') {
+                // Backwards compatible: If the dateFormat is still a string (like 'DD MM YYYY'), replace it with the default.
+                // This is exactly the previous behavior.
+                dateFormat = {
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: '2-digit' 
+                }
+            }
+            return date.toLocaleDateString(config.locale, dateFormat);
         } catch (error) {
             Log.warn(`[${this.name}] Failed to format date: ${dateString}`);
             return dateString;
