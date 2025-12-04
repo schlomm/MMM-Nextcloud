@@ -36,7 +36,11 @@ Module.register("MMM-Nextcloud", {
         showExifData: true,
         enableGeocoding: true, // Enable reverse geocoding for GPS coordinates to location names
         showOsmAttribution: true, // Show OpenStreetMap attribution when location data is displayed
-        dateFormat: "DD MMMM YYYY", // Custom date format for EXIF data display
+        dateFormat: {  // Custom date format for EXIF data display
+            year: 'numeric', 
+            month: 'long', 
+            day: '2-digit' 
+        }
     },
 
     start: function() {
@@ -344,12 +348,17 @@ Module.register("MMM-Nextcloud", {
             }
             
             // Simple date formatting - could be enhanced with moment.js alternative
-            const options = { 
-                year: 'numeric', 
-                month: 'long', 
-                day: '2-digit' 
-            };
-            return date.toLocaleDateString('en-US', options);
+            let dateFormat = this.config.dateFormat;
+            if (typeof(dateFormat) !== 'object') {
+                // Backwards compatible: If the dateFormat is still a string (like 'DD MM YYYY'), replace it with the default.
+                // This is exactly the previous behavior.
+                dateFormat = {
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: '2-digit' 
+                }
+            }
+            return date.toLocaleDateString(config.locale, dateFormat);
         } catch (error) {
             Log.warn(`[${this.name}] Failed to format date: ${dateString}`);
             return dateString;

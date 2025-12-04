@@ -80,7 +80,11 @@ Add the module to your `config/config.js` file:
         showExifData: true,
         enableGeocoding: true, // Enable reverse geocoding for GPS coordinates
         showOsmAttribution: false, // Show OpenStreetMap attribution when location data is displayed
-        dateFormat: "DD MMMM YYYY", // Custom date format
+        dateFormat: { 
+            year: 'numeric', 
+            month: 'long', 
+            day: '2-digit' 
+        }, // Custom date format
         showStatusIcon: true,
         statusIconPosition: "top_right", // top_right, top_left, bottom_right, bottom_left
         statusIconMode: "show", // show, fade
@@ -120,7 +124,7 @@ For security, use Nextcloud app passwords instead of your main password:
 | `showExifData` | boolean | `true` | Display EXIF data (date/location) |
 | `enableGeocoding` | boolean | `true` | Enable reverse geocoding to convert GPS coordinates to location names |
 | `showOsmAttribution` | boolean | `false` | Show OpenStreetMap attribution when location data is displayed |
-| `dateFormat` | string | `"DD MMMM YYYY"` | Date format for EXIF display |
+| `dateFormat` | object | `{year: 'numeric', month: 'long', day: '2-digit'}` | Date format for EXIF display (For specification see Date.prototype.toLocaleDateString()) |
 | `showStatusIcon` | boolean | `true` | Show status icon |
 | `statusIconPosition` | string | `"top_right"` | Icon position: top_right, top_left, bottom_right, bottom_left |
 | `statusIconMode` | string | `"show"` | Icon behavior: show, fade |
